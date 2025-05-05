@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-# FitLife - Aplicativo de Treino e Alimentação
 
-FitLife é um Progressive Web App (PWA) desenvolvido com HTML, CSS e JavaScript para acompanhamento de treinos e alimentação.
+#GWM WORK OUT  - Aplicativo de Treino e Alimentação
+
+GWM WORK OUT é um Progressive Web App (PWA) desenvolvido com HTML, CSS e JavaScript para acompanhamento de treinos e alimentação.
 
 ## Funcionalidades
 
