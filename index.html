@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e53935">
+    <title>FitLife - Treino e Alimentação</title>
+    <link rel="stylesheet" href="css/style.css">    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="img/icons/icon-512x512.svg">
+    <link rel="apple-touch-icon" href="img/icons/icon-512x512.svg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+    <div class="logo">
+            <img src="img/logo.svg" alt="FitLife Logo">
+            <h1>FitLife</h1>
+        </div>
+        <nav id="main-nav">
+            <button class="nav-toggle" aria-label="Abrir Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" data-page="home" class="active">Início</a></li>
+                <li class="nav-item"><a href="#" data-page="workout">Treinos</a></li>
+                <li class="nav-item"><a href="#" data-page="nutrition">Alimentação</a></li>
+                <li class="nav-item"><a href="#" data-page="progress">Progresso</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Página Inicial -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h2>Bem-vindo ao FitLife</h2>
+                <p>Seu companheiro para uma vida mais saudável</p>
+            </div>
+            <div class="dashboard">
+                <div class="card">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Treino de Hoje</h3>
+                    <p>Treino de Pernas</p>
+                    <button class="btn btn-primary" data-target="workout">Ver Treino</button>
+                </div>
+                <div class="card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Alimentação</h3>
+                    <p>1200 Cal Consumidas</p>
+                    <button class="btn btn-primary" data-target="nutrition">Detalhes</button>
+                </div>
+                <div class="card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Seu progresso</h3>
+                    <p>Confira seus avanços</p>
+                    <button class="btn btn-primary" data-target="progress">Ver Progresso</button>
+                </div>
+            </div>
+        </section>        <!-- Página de Treinos -->
+        <section id="workout" class="page">
+            <h2>Seus Treinos</h2>
+            <div class="workout-actions">
+                <button class="btn btn-primary create-workout-btn">
+                    <i class="fas fa-plus"></i> Criar Meu Treino
+                </button>
+                <button class="btn btn-secondary templates-btn">
+                    <i class="fas fa-clipboard-list"></i> Treinos Pré-definidos
+                </button>
+            </div>
+            <div class="workout-days">
+                <div class="day-selector">
+                    <button class="day-btn active" data-day="segunda">Seg</button>
+                    <button class="day-btn" data-day="terca">Ter</button>
+                    <button class="day-btn" data-day="quarta">Qua</button>
+                    <button class="day-btn" data-day="quinta">Qui</button>
+                    <button class="day-btn" data-day="sexta">Sex</button>
+                    <button class="day-btn" data-day="sabado">Sáb</button>
+                    <button class="day-btn" data-day="domingo">Dom</button>
+                </div>
+                
+                <div class="workout-type-legend">
+                    <span class="legend-item workout-type-full-body">Full Body</span>
+                    <span class="legend-item workout-type-upper">Superior</span>
+                    <span class="legend-item workout-type-lower">Inferior</span>
+                    <span class="legend-item workout-type-push">Push</span>
+                    <span class="legend-item workout-type-pull">Pull</span>
+                    <span class="legend-item workout-type-custom">Personalizado</span>
+                </div>
+            </div>
+
+            <div class="workout-plans">
+                <div class="workout-day active" id="segunda">
+                    <h3>Segunda: Treino de Pernas</h3>
+                    <ul class="exercise-list">
+                        <li class="exercise-item">
+                            <div class="exercise-header">
+                                <h4>Agachamento</h4>
+                                <span class="sets">4 séries x 12 repetições</span>
+                                <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                            </div>                            <div class="exercise-details">
+                                <img src="img/exercises/squat.svg" alt="Agachamento">
+                                <p>Mantenha os pés na largura dos ombros, desça como se fosse sentar em uma cadeira.</p>
+                                <div class="exercise-timer">
+                                    <span class="timer-display">00:00</span>
+                                    <div class="timer-controls">
+                                        <button class="btn btn-small start-timer" data-exercise="agachamento">
+                                            <i class="fas fa-play"></i> Iniciar
+                                        </button>
+                                        <button class="btn btn-small pause-timer" style="display: none;">
+                                            <i class="fas fa-pause"></i> Pausar
+                                        </button>
+                                        <button class="btn btn-small reset-timer">
+                                            <i class="fas fa-redo-alt"></i> Reiniciar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="logs">
+                                    <button class="btn btn-small">Registrar</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="exercise-item">
+                            <div class="exercise-header">
+                                <h4>Leg Press</h4>
+                                <span class="sets">3 séries x 15 repetições</span>
+                                <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                            </div>
+                            <div class="exercise-details">
+                                <img src="img/exercises/leg-press.svg" alt="Leg Press">
+                                <p>Ajuste o assento para que os joelhos fiquem em 90° no início do movimento.</p>
+                                <div class="logs">
+                                    <button class="btn btn-small">Registrar</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="exercise-item">
+                            <div class="exercise-header">
+                                <h4>Cadeira Extensora</h4>
+                                <span class="sets">3 séries x 12 repetições</span>
+                                <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                            </div>
+                            <div class="exercise-details">
+                                <img src="img/exercises/leg-extension.svg" alt="Cadeira Extensora">
+                                <p>Estenda as pernas completamente e contraia os quadríceps no topo do movimento.</p>
+                                <div class="logs">
+                                    <button class="btn btn-small">Registrar</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Outros dias de treino (conteúdo semelhante) -->
+                <div class="workout-day" id="terca">
+                    <h3>Terça: Treino de Peito e Tríceps</h3>
+                    <ul class="exercise-list">
+                        <!-- Exercícios para terça -->
+                    </ul>
+                </div>
+                <!-- Outros dias aqui -->
+            </div>
+        </section>
+
+        <!-- Página de Alimentação -->
+        <section id="nutrition" class="page">
+            <h2>Alimentação</h2>            <div class="nutrition-summary">
+                <div class="calorie-chart">
+                    <canvas id="calorieChart"></canvas>
+                    <div class="calorie-info">
+                        <div class="calorie-consumed">
+                            <span class="calorie-number">1200</span>
+                            <span class="calorie-label">Consumidas</span>
+                        </div>
+                        <div class="calorie-remaining">
+                            <span class="calorie-number">800</span>
+                            <span class="calorie-label">Restantes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Water Intake Tracker -->
+                <div class="water-tracker">
+                    <h3>Consumo de Água</h3>
+                    <div class="water-container">
+                        <div class="water-level" style="height: 40%"></div>
+                        <div class="water-goal">2L</div>
+                    </div>
+                    <div class="water-controls">
+                        <span class="water-amount">800ml</span>
+                        <div class="water-buttons">
+                            <button class="btn btn-small water-btn" data-amount="-250">- 250ml</button>
+                            <button class="btn btn-small water-btn" data-amount="250">+ 250ml</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="macros">
+                    <div class="macro-item">
+                        <h4>Proteínas</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                        <span>75g / 100g</span>
+                    </div>
+                    <div class="macro-item">
+                        <h4>Carboidratos</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                        <span>120g / 200g</span>
+                    </div>
+                    <div class="macro-item">
+                        <h4>Gorduras</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 45%"></div>
+                        </div>
+                        <span>30g / 67g</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal-tracker">
+                <h3>Refeições do Dia</h3>
+                <div class="meal-list">
+                    <div class="meal-item">
+                        <h4>Café da Manhã</h4>
+                        <ul class="food-items">
+                            <li>
+                                <span class="food-name">Ovos mexidos</span>
+                                <span class="food-quantity">2 unidades</span>
+                                <span class="food-calories">180 cal</span>
+                            </li>
+                            <li>
+                                <span class="food-name">Pão integral</span>
+                                <span class="food-quantity">2 fatias</span>
+                                <span class="food-calories">140 cal</span>
+                            </li>
+                        </ul>
+                        <button class="btn btn-small">+ Adicionar Alimento</button>
+                    </div>
+                    <div class="meal-item">
+                        <h4>Almoço</h4>
+                        <ul class="food-items">
+                            <li>
+                                <span class="food-name">Arroz integral</span>
+                                <span class="food-quantity">100g</span>
+                                <span class="food-calories">130 cal</span>
+                            </li>
+                            <li>
+                                <span class="food-name">Frango grelhado</span>
+                                <span class="food-quantity">150g</span>
+                                <span class="food-calories">250 cal</span>
+                            </li>
+                            <li>
+                                <span class="food-name">Salada verde</span>
+                                <span class="food-quantity">1 porção</span>
+                                <span class="food-calories">50 cal</span>
+                            </li>
+                        </ul>
+                        <button class="btn btn-small">+ Adicionar Alimento</button>
+                    </div>
+                    <div class="meal-item">
+                        <h4>Jantar</h4>
+                        <ul class="food-items">
+                            <li>
+                                <span class="food-name">Salmão</span>
+                                <span class="food-quantity">120g</span>
+                                <span class="food-calories">280 cal</span>
+                            </li>
+                            <li>
+                                <span class="food-name">Batata doce</span>
+                                <span class="food-quantity">100g</span>
+                                <span class="food-calories">170 cal</span>
+                            </li>
+                        </ul>
+                        <button class="btn btn-small">+ Adicionar Alimento</button>
+                    </div>
+                </div>
+                <div class="add-meal">
+                    <button class="btn btn-primary btn-block">+ Nova Refeição</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Progresso -->
+        <section id="progress" class="page">
+            <h2>Seu Progresso</h2>
+            <div class="progress-charts">
+                <div class="chart-container">
+                    <h3>Peso Corporal</h3>
+                    <canvas id="weightChart"></canvas>
+                </div>                <div class="chart-container">
+                    <h3>Calorias por Dia</h3>
+                    <canvas id="caloriesChart"></canvas>
+                </div>
+                <div class="measurements">
+                    <h3>Medidas Corporais</h3>
+                    <div class="measurement-grid">
+                        <div class="measurement-item">
+                            <h4>Peso</h4>
+                            <div class="measurement-value">82 <span class="unit">kg</span></div>
+                            <div class="measurement-change positive">-2kg</div>
+                        </div>
+                        <div class="measurement-item">
+                            <h4>Cintura</h4>
+                            <div class="measurement-value">85 <span class="unit">cm</span></div>
+                            <div class="measurement-change positive">-3cm</div>
+                        </div>
+                        <div class="measurement-item">
+                            <h4>Braço</h4>
+                            <div class="measurement-value">38 <span class="unit">cm</span></div>
+                            <div class="measurement-change positive">+2cm</div>
+                        </div>
+                        <div class="measurement-item">
+                            <h4>Coxa</h4>
+                            <div class="measurement-value">58 <span class="unit">cm</span></div>
+                            <div class="measurement-change positive">+1cm</div>
+                        </div>
+                    </div>
+                    <div class="progress-actions">
+                        <button class="btn btn-primary" id="updateMeasurements">Atualizar Medidas</button>
+                        <button class="btn btn-secondary" id="exportData">Exportar Dados</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="bottom-nav">
+            <a href="#" data-page="home" class="bottom-nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+            </a>
+            <a href="#" data-page="workout" class="bottom-nav-item">
+                <i class="fas fa-dumbbell"></i>
+                <span>Treinos</span>
+            </a>
+            <a href="#" data-page="nutrition" class="bottom-nav-item">
+                <i class="fas fa-apple-alt"></i>
+                <span>Alimentação</span>
+            </a>
+            <a href="#" data-page="progress" class="bottom-nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Progresso</span>
+            </a>
+        </div>
+    </footer>    <!-- Modal para adicionar alimentos -->
+    <div class="modal" id="addFoodModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adicionar Alimento</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addFoodForm">
+                    <div class="form-group">
+                        <label for="foodName">Nome do Alimento</label>
+                        <input type="text" id="foodName" placeholder="Ex: Arroz integral">
+                    </div>
+                    <div class="form-group">
+                        <label for="foodQuantity">Quantidade</label>
+                        <input type="text" id="foodQuantity" placeholder="Ex: 100g">
+                    </div>
+                    <div class="form-group">
+                        <label for="foodCalories">Calorias</label>
+                        <input type="number" id="foodCalories" placeholder="Ex: 130">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="foodProtein">Proteínas (g)</label>
+                            <input type="number" id="foodProtein" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="foodCarbs">Carboidratos (g)</label>
+                            <input type="number" id="foodCarbs" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="foodFat">Gorduras (g)</label>
+                            <input type="number" id="foodFat" placeholder="0">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para criar treino personalizado -->
+    <div class="modal" id="createWorkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Criar Meu Treino</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createWorkoutForm">
+                    <div class="form-group">
+                        <label for="workoutDay">Dia da Semana</label>
+                        <select id="workoutDay" required>
+                            <option value="segunda">Segunda-feira</option>
+                            <option value="terca">Terça-feira</option>
+                            <option value="quarta">Quarta-feira</option>
+                            <option value="quinta">Quinta-feira</option>
+                            <option value="sexta">Sexta-feira</option>
+                            <option value="sabado">Sábado</option>
+                            <option value="domingo">Domingo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="workoutName">Nome do Treino</label>
+                        <input type="text" id="workoutName" placeholder="Ex: Treino de Pernas" required>
+                    </div>
+                    
+                    <h4>Exercícios</h4>
+                    <div class="exercises-container" id="exercisesContainer">
+                        <div class="exercise-item-form">
+                            <div class="form-group">
+                                <label>Nome do Exercício</label>
+                                <input type="text" class="exercise-name" placeholder="Ex: Agachamento" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Séries</label>
+                                    <input type="number" class="exercise-sets" min="1" max="10" value="3" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Repetições</label>
+                                    <input type="number" class="exercise-reps" min="1" max="100" value="12" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Peso (kg)</label>
+                                    <input type="number" class="exercise-weight" min="0" step="0.5" placeholder="Opcional">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Descrição/Notas</label>
+                                <textarea class="exercise-notes" placeholder="Dicas ou instruções para o exercício"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-small btn-delete remove-exercise">Remover</button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-secondary btn-block" id="addExerciseBtn">
+                        <i class="fas fa-plus"></i> Adicionar Exercício
+                    </button>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Salvar Treino</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para treinos pré-definidos -->
+    <div class="modal" id="workoutTemplatesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Treinos Pré-definidos</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="template-categories">
+                    <button class="template-category active" data-category="iniciante">Iniciante</button>
+                    <button class="template-category" data-category="intermediario">Intermediário</button>
+                    <button class="template-category" data-category="avancado">Avançado</button>
+                </div>
+                
+                <div class="template-list">
+                    <div class="template-category-content active" data-category="iniciante">
+                        <div class="template-item">
+                            <h4>Treino Full Body (3x por semana)</h4>
+                            <p>Treino completo para iniciantes que trabalha todo o corpo em cada sessão.</p>
+                            <div class="template-details">
+                                <ul class="template-exercises">
+                                    <li>Agachamento: 3 séries x 10 repetições</li>
+                                    <li>Supino reto: 3 séries x 10 repetições</li>
+                                    <li>Remada curvada: 3 séries x 10 repetições</li>
+                                    <li>Desenvolvimento de ombros: 3 séries x 10 repetições</li>
+                                    <li>Rosca direta: 2 séries x 12 repetições</li>
+                                    <li>Tríceps corda: 2 séries x 12 repetições</li>
+                                    <li>Prancha: 3 séries x 30 segundos</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary use-template" data-template="full-body">Usar Este Treino</button>
+                        </div>
+                        
+                        <div class="template-item">
+                            <h4>Treino ABC (3x por semana)</h4>
+                            <p>Treino dividido em 3 dias: A (Peitoral/Tríceps), B (Costas/Bíceps), C (Pernas/Ombros).</p>
+                            <div class="template-details">
+                                <h5>Dia A - Peito e Tríceps</h5>
+                                <ul class="template-exercises">
+                                    <li>Supino reto: 3 séries x 12 repetições</li>
+                                    <li>Crucifixo: 3 séries x 12 repetições</li>
+                                    <li>Tríceps pulley: 3 séries x 12 repetições</li>
+                                    <li>Tríceps francês: 2 séries x 12 repetições</li>
+                                </ul>
+                                
+                                <h5>Dia B - Costas e Bíceps</h5>
+                                <ul class="template-exercises">
+                                    <li>Puxada frontal: 3 séries x 12 repetições</li>
+                                    <li>Remada baixa: 3 séries x 12 repetições</li>
+                                    <li>Rosca direta: 3 séries x 12 repetições</li>
+                                    <li>Rosca martelo: 2 séries x 12 repetições</li>
+                                </ul>
+                                
+                                <h5>Dia C - Pernas e Ombros</h5>
+                                <ul class="template-exercises">
+                                    <li>Agachamento: 3 séries x 12 repetições</li>
+                                    <li>Cadeira extensora: 3 séries x 12 repetições</li>
+                                    <li>Desenvolvimento: 3 séries x 12 repetições</li>
+                                    <li>Elevação lateral: 2 séries x 12 repetições</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary use-template" data-template="abc">Usar Este Treino</button>
+                        </div>
+                    </div>
+                    
+                    <div class="template-category-content" data-category="intermediario">
+                        <div class="template-item">
+                            <h4>Treino Push/Pull/Legs (6x por semana)</h4>
+                            <p>Treino dividido em empurrar, puxar e pernas. Ideal para quem já tem experiência.</p>
+                            <div class="template-details">
+                                <h5>Dia 1 e 4 - Push (Peito, Ombro, Tríceps)</h5>
+                                <ul class="template-exercises">
+                                    <li>Supino inclinado: 4 séries x 8-10 repetições</li>
+                                    <li>Supino reto: 3 séries x 8-10 repetições</li>
+                                    <li>Desenvolvimento militar: 4 séries x 8-10 repetições</li>
+                                    <li>Elevação lateral: 3 séries x 10-12 repetições</li>
+                                    <li>Tríceps corda: 3 séries x 10-12 repetições</li>
+                                    <li>Tríceps testa: 3 séries x 10-12 repetições</li>
+                                </ul>
+                                
+                                <h5>Dia 2 e 5 - Pull (Costas, Bíceps, Antebraço)</h5>
+                                <ul class="template-exercises">
+                                    <li>Barra fixa: 4 séries x máximo de repetições</li>
+                                    <li>Remada curvada: 4 séries x 8-10 repetições</li>
+                                    <li>Puxada frontal: 3 séries x 10-12 repetições</li>
+                                    <li>Rosca W: 3 séries x 10-12 repetições</li>
+                                    <li>Rosca martelo: 3 séries x 10-12 repetições</li>
+                                    <li>Rosca punho: 3 séries x 15 repetições</li>
+                                </ul>
+                                
+                                <h5>Dia 3 e 6 - Legs (Pernas, Abdômen)</h5>
+                                <ul class="template-exercises">
+                                    <li>Agachamento livre: 4 séries x 8-10 repetições</li>
+                                    <li>Leg press: 4 séries x 10-12 repetições</li>
+                                    <li>Cadeira extensora: 3 séries x 12-15 repetições</li>
+                                    <li>Stiff: 3 séries x 10-12 repetições</li>
+                                    <li>Mesa flexora: 3 séries x 12-15 repetições</li>
+                                    <li>Panturrilha no leg: 4 séries x 15-20 repetições</li>
+                                    <li>Abdominal: 4 séries x 20 repetições</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary use-template" data-template="ppl">Usar Este Treino</button>
+                        </div>
+                    </div>
+                    
+                    <div class="template-category-content" data-category="avancado">
+                        <div class="template-item">
+                            <h4>Treino de Alta Intensidade (5x por semana)</h4>
+                            <p>Para praticantes avançados buscando hipertrofia máxima e definição.</p>
+                            <div class="template-details">
+                                <h5>Segunda: Peito/Tríceps + HIIT</h5>
+                                <ul class="template-exercises">
+                                    <li>Supino inclinado com barra: 5 séries x 6-8 repetições</li>
+                                    <li>Supino reto com halteres: 4 séries x 8-10 repetições</li>
+                                    <li>Crossover: 3 séries x 12 repetições</li>
+                                    <li>Paralelas: 4 séries x falha</li>
+                                    <li>Tríceps na polia: 4 séries x 10-12 repetições</li>
+                                    <li>HIIT: 10 minutos (30s on/30s off)</li>
+                                </ul>
+                                
+                                <h5>Terça: Costas/Bíceps + Core</h5>
+                                <ul class="template-exercises">
+                                    <li>Pull-ups: 5 séries x falha</li>
+                                    <li>Remada curvada: 4 séries x 8 repetições</li>
+                                    <li>Puxada frontal: 4 séries x 10 repetições</li>
+                                    <li>Rosca Scott: 4 séries x 8-10 repetições</li>
+                                    <li>Rosca concentrada: 3 séries x 12 repetições</li>
+                                    <li>Abdominais complexos: 4 circuitos</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary use-template" data-template="high-intensity">Usar Este Treino</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- Script para os gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Scripts para autenticação -->
+    <script src="js/auth.js"></script>
+    <!-- Script para cronômetro de exercícios -->
+    <script src="js/timer.js"></script>
+    <!-- Scripts para a aplicação -->
+    <script src="js/app.js"></script>
+    <script>
+        // Registra o service worker para PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Service Worker não registrado', err));
+            });
+        }
+    </script>
+</body>
+</html>

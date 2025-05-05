@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e53935">
+    <title>Meu Perfil - FitLife</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="img/icons/icon-512x512.svg">
+    <link rel="apple-touch-icon" href="img/icons/icon-512x512.svg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.svg" alt="FitLife Logo">
+            <h1>FitLife</h1>
+        </div>
+        <nav id="main-nav">
+            <button class="nav-toggle" aria-label="Abrir Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" data-page="home">Início</a></li>
+                <li class="nav-item"><a href="index.html" data-page="workout">Treinos</a></li>
+                <li class="nav-item"><a href="index.html" data-page="nutrition">Alimentação</a></li>
+                <li class="nav-item"><a href="index.html" data-page="progress">Progresso</a></li>
+                <li class="nav-item user-profile-nav">
+                    <a href="#" class="user-profile-link active">
+                        <img src="" alt="Perfil" class="user-avatar">
+                        <span class="user-name"></span>
+                    </a>
+                    <div class="user-dropdown">
+                        <a href="#" class="active">Meu Perfil</a>
+                        <a href="#" id="logoutBtn">Sair</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-page page active">
+            <h2>Meu Perfil</h2>
+            
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-picture-container">
+                        <img src="" alt="Foto de Perfil" class="profile-picture" id="profilePicture">
+                        <button class="btn btn-small change-picture">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="profileName"></h3>
+                        <p id="profileEmail"></p>
+                        <p id="memberSince">Membro desde: <span>Maio 2025</span></p>
+                    </div>
+                </div>
+                
+                <div class="profile-tabs">
+                    <button class="profile-tab active" data-tab="personal">Dados Pessoais</button>
+                    <button class="profile-tab" data-tab="preferences">Preferências</button>
+                    <button class="profile-tab" data-tab="security">Segurança</button>
+                </div>
+                
+                <div class="profile-content">
+                    <!-- Dados Pessoais -->
+                    <div class="profile-tab-content active" id="personal-tab">
+                        <form id="personalDataForm">
+                            <div class="form-group">
+                                <label for="fullName">Nome Completo</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Seu nome completo">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="birthDate">Data de Nascimento</label>
+                                    <input type="date" id="birthDate" name="birthDate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Gênero</label>
+                                    <select id="gender" name="gender">
+                                        <option value="">Selecione</option>
+                                        <option value="male">Masculino</option>
+                                        <option value="female">Feminino</option>
+                                        <option value="other">Outro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="height">Altura (cm)</label>
+                                    <input type="number" id="height" name="height" min="100" max="250" placeholder="175">
+                                </div>
+                                <div class="form-group">
+                                    <label for="weight">Peso (kg)</label>
+                                    <input type="number" id="weight" name="weight" min="30" max="300" step="0.1" placeholder="70.5">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Preferências -->
+                    <div class="profile-tab-content" id="preferences-tab">
+                        <form id="preferencesForm">
+                            <div class="form-group">
+                                <label for="fitnessGoal">Objetivo Principal</label>
+                                <select id="fitnessGoal" name="fitnessGoal">
+                                    <option value="lose_weight">Perder Peso</option>
+                                    <option value="gain_muscle">Ganhar Massa Muscular</option>
+                                    <option value="maintain">Manter Forma</option>
+                                    <option value="improve_health">Melhorar Saúde</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="activityLevel">Nível de Atividade</label>
+                                <select id="activityLevel" name="activityLevel">
+                                    <option value="sedentary">Sedentário</option>
+                                    <option value="light">Levemente Ativo</option>
+                                    <option value="moderate">Moderadamente Ativo</option>
+                                    <option value="very_active">Muito Ativo</option>
+                                    <option value="extra_active">Extremamente Ativo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Dias de Treino Preferidos</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="day_mon" name="workout_days" value="monday">
+                                        <label for="day_mon">Segunda</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="day_tue" name="workout_days" value="tuesday">
+                                        <label for="day_tue">Terça</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="day_wed" name="workout_days" value="wednesday">
+                                        <label for="day_wed">Quarta</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="day_thu" name="workout_days" value="thursday">
+                                        <label for="day_thu">Quinta</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="day_fri" name="workout_days" value="friday">
+                                        <label for="day_fri">Sexta</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="day_sat" name="workout_days" value="saturday">
+                                        <label for="day_sat">Sábado</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="day_sun" name="workout_days" value="sunday">
+                                        <label for="day_sun">Domingo</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Salvar Preferências</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Segurança -->
+                    <div class="profile-tab-content" id="security-tab">
+                        <form id="securityForm">
+                            <div class="form-group">
+                                <label for="currentPassword">Senha Atual</label>
+                                <div class="password-input">
+                                    <input type="password" id="currentPassword" name="currentPassword" placeholder="Digite sua senha atual">
+                                    <button type="button" class="toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">Nova Senha</label>
+                                <div class="password-input">
+                                    <input type="password" id="newPassword" name="newPassword" placeholder="Digite uma nova senha">
+                                    <button type="button" class="toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword">Confirmar Nova Senha</label>
+                                <div class="password-input">
+                                    <input type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirme sua nova senha">
+                                    <button type="button" class="toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Atualizar Senha</button>
+                        </form>
+                        
+                        <hr class="divider">
+                        
+                        <div class="danger-zone">
+                            <h3>Zona de Perigo</h3>
+                            <p>As ações abaixo são irreversíveis. Por favor, tenha cuidado.</p>
+                            <button type="button" class="btn btn-delete" id="deleteAccountBtn">Excluir Conta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="bottom-nav">
+            <a href="index.html" data-page="home" class="bottom-nav-item">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+            </a>
+            <a href="index.html" data-page="workout" class="bottom-nav-item">
+                <i class="fas fa-dumbbell"></i>
+                <span>Treinos</span>
+            </a>
+            <a href="index.html" data-page="nutrition" class="bottom-nav-item">
+                <i class="fas fa-apple-alt"></i>
+                <span>Alimentação</span>
+            </a>
+            <a href="index.html" data-page="progress" class="bottom-nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Progresso</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scripts para autenticação -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Funções para a página de perfil
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica autenticação
+            if (typeof authManager !== 'undefined' && authManager.isAuthenticated) {
+                // Carrega informações do usuário
+                loadUserProfile();
+            } else {
+                // Redireciona para login
+                window.location.href = 'login.html';
+            }
+            
+            // Configurar tabs do perfil
+            const profileTabs = document.querySelectorAll('.profile-tab');
+            const tabContents = document.querySelectorAll('.profile-tab-content');
+            
+            profileTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Ativa a tab clicada
+                    profileTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostra o conteúdo correspondente
+                    tabContents.forEach(content => {
+                        if (content.id === tabName + '-tab') {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Toggle de senha
+            const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+            togglePasswordButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const passwordInput = this.previousElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+            
+            // Logout
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    authManager.logout();
+                });
+            }
+            
+            // Delete account
+            const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+            if (deleteAccountBtn) {
+                deleteAccountBtn.addEventListener('click', function() {
+                    if (confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.')) {
+                        // Simulação de exclusão
+                        alert('Conta excluída com sucesso.');
+                        authManager.logout();
+                    }
+                });
+            }
+            
+            // Forms
+            const personalDataForm = document.getElementById('personalDataForm');
+            if (personalDataForm) {
+                personalDataForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Dados pessoais salvos com sucesso!');
+                });
+            }
+            
+            const preferencesForm = document.getElementById('preferencesForm');
+            if (preferencesForm) {
+                preferencesForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Preferências salvas com sucesso!');
+                });
+            }
+            
+            const securityForm = document.getElementById('securityForm');
+            if (securityForm) {
+                securityForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const newPassword = document.getElementById('newPassword').value;
+                    const confirmPassword = document.getElementById('confirmNewPassword').value;
+                    
+                    if (newPassword !== confirmPassword) {
+                        alert('As senhas não coincidem!');
+                        return;
+                    }
+                    
+                    alert('Senha atualizada com sucesso!');
+                    this.reset();
+                });
+            }
+        });
+        
+        // Carrega o perfil do usuário
+        function loadUserProfile() {
+            const profilePicture = document.getElementById('profilePicture');
+            const profileName = document.getElementById('profileName');
+            const profileEmail = document.getElementById('profileEmail');
+            const userAvatar = document.querySelector('.user-avatar');
+            const userName = document.querySelector('.user-name');
+            const fullNameInput = document.getElementById('fullName');
+            
+            if (authManager && authManager.user) {
+                if (profilePicture) profilePicture.src = authManager.user.profilePicture;
+                if (profileName) profileName.textContent = authManager.user.name;
+                if (profileEmail) profileEmail.textContent = authManager.user.email;
+                if (userAvatar) userAvatar.src = authManager.user.profilePicture;
+                if (userName) userName.textContent = authManager.user.name;
+                if (fullNameInput) fullNameInput.value = authManager.user.name;
+            }
+        }
+    </script>
+</body>
+</html>

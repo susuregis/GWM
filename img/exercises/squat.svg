@@ -1,0 +1,19 @@
+<!-- SVG Placeholder for Squat Exercise -->
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f5f5f5" />
+  
+  <!-- Person doing squat (simplified) -->
+  <g transform="translate(150, 50)">
+    <!-- Head -->
+    <circle cx="50" cy="30" r="20" fill="#ccc" />
+    
+    <!-- Body -->
+    <path d="M50,50 L50,120 M50,70 L20,100 M50,70 L80,100 M50,120 L30,170 M50,120 L70,170" 
+          stroke="#555" stroke-width="8" fill="none" stroke-linecap="round" />
+  </g>
+  
+  <!-- Label -->
+  <rect x="10" y="240" width="380" height="50" fill="rgba(76, 175, 80, 0.7)" />
+  <text x="200" y="270" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="white">Agachamento (Squat)</text>
+</svg>

@@ -1,0 +1,1421 @@
+/* Variables */
+:root {
+    --primary-color: #e53935;
+    --primary-dark: #b71c1c;
+    --primary-light: #ef5350;
+    --secondary-color: #212121;    --text-color: #f5f5f5;
+    --text-light: #bdbdbd;
+    --background-color: #121212;
+    --card-color: #1e1e1e;
+    --border-radius: 8px;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+/* Layout */
+header {
+    background-color: var(--card-color);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+main {
+    padding: var(--spacing-md);
+    margin-bottom: 60px; /* Space for bottom navigation */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--card-color);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+/* Navigation */
+#main-nav {
+    display: none; /* Hidden on mobile, shown on larger screens */
+}
+
+.nav-toggle {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+}
+
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card-color);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-md);
+}
+
+.nav-menu.open {
+    display: block;
+}
+
+.nav-item {
+    margin-bottom: var(--spacing-sm);
+}
+
+.nav-item a {
+    display: block;
+    padding: var(--spacing-sm);
+    color: var(--text-color);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-item a.active,
+.nav-item a:hover {
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+    border-radius: var(--border-radius);
+}
+
+/* Menu de usuário */
+.user-profile-nav {
+    position: relative;
+}
+
+.user-profile-link {
+    display: flex !important;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--card-color);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    min-width: 150px;
+    display: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.user-dropdown a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0;
+}
+
+.user-profile-nav:hover .user-dropdown {
+    display: block;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: var(--spacing-sm) 0;
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xs);
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.bottom-nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.bottom-nav-item span {
+    font-size: 0.8rem;
+}
+
+.bottom-nav-item.active {
+    color: var(--primary-color);
+}
+
+/* Pages */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Home Page */
+.hero {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
+}
+
+.hero h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.card {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.card h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+}
+
+.card p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+/* Buttons */
+.btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #000000;
+}
+
+.btn-small {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Workout Page */
+.workout-days {
+    margin-bottom: var(--spacing-lg);
+}
+
+.day-selector {
+    display: flex;
+    overflow-x: auto;
+    gap: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
+}
+
+.day-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    background-color: var(--card-color);
+    border: 1px solid #333;
+    color: var(--text-color);
+    font-weight: 600;
+    min-width: 60px;
+    text-align: center;
+}
+
+.day-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Estilos para indicar dias com treinos */
+.day-btn.has-workout {
+    position: relative;
+}
+
+.day-btn.has-workout::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Cores diferentes para mostrar o tipo de treino */
+.day-btn.workout-type-full-body::after {
+    background-color: #4CAF50; /* verde */
+}
+
+.day-btn.workout-type-upper::after {
+    background-color: #2196F3; /* azul */
+}
+
+.day-btn.workout-type-lower::after {
+    background-color: #FF9800; /* laranja */
+}
+
+.day-btn.workout-type-push::after {
+    background-color: #9C27B0; /* roxo */
+}
+
+.day-btn.workout-type-pull::after {
+    background-color: #FFC107; /* amarelo */
+}
+
+.day-btn.workout-type-custom::after {
+    background-color: var(--primary-color); /* vermelho padrão */
+}
+
+.workout-day {
+    display: none;
+}
+
+.workout-day.active {
+    display: block;
+}
+
+.workout-day h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.workout-day h3 .creation-date {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: normal;
+    margin-top: 0.25rem;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.exercise-item {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.exercise-header {
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exercise-header h4 {
+    font-weight: 600;
+}
+
+.sets {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.expand-btn {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.expand-btn.active {
+    transform: rotate(180deg);
+}
+
+.exercise-details {
+    padding: var(--spacing-md);
+    display: none;
+    border-top: 1px solid #eee;
+}
+
+.exercise-details.open {
+    display: block;
+}
+
+.exercise-details img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-sm);
+}
+
+.exercise-details p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+.logs {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Nutrition Page */
+.nutrition-summary {
+    margin-bottom: var(--spacing-lg);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.calorie-chart {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+/* Water Tracker */
+.water-tracker {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.water-tracker h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    align-self: flex-start;
+}
+
+.water-container {
+    width: 100px;
+    height: 200px;
+    border: 3px solid var(--primary-color);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+}
+
+.water-level {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(229, 57, 53, 0.7);
+    transition: height 0.5s ease;
+}
+
+.water-goal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.water-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.water-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.water-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.water-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calorie-info {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-md);
+}
+
+.calorie-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.calorie-consumed .calorie-number {
+    color: var(--secondary-color);
+}
+
+.calorie-remaining .calorie-number {
+    color: var(--primary-color);
+}
+
+.calorie-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.macros {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.macro-item {
+    margin-bottom: var(--spacing-md);
+}
+
+.macro-item:last-child {
+    margin-bottom: 0;
+}
+
+.macro-item h4 {
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-xs);
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.macro-item:nth-child(1) .progress {
+    background-color: var(--primary-color); /* Proteínas */
+}
+
+.macro-item:nth-child(2) .progress {
+    background-color: var(--secondary-color); /* Carboidratos */
+}
+
+.macro-item:nth-child(3) .progress {
+    background-color: #424242; /* Gorduras */
+}
+
+.macro-item span {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.meal-tracker {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.meal-tracker h3 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--primary-color);
+}
+
+.meal-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.meal-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: var(--spacing-md);
+}
+
+.meal-item:last-child {
+    border-bottom: none;
+}
+
+.meal-item h4 {
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.food-items {
+    margin-bottom: var(--spacing-sm);
+}
+
+.food-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) 0;
+}
+
+.food-name {
+    flex: 2;
+}
+
+.food-quantity {
+    flex: 1;
+    color: var(--text-light);
+    text-align: center;
+}
+
+.food-calories {
+    flex: 1;
+    text-align: right;
+    font-weight: 500;
+}
+
+.add-meal {
+    margin-top: var(--spacing-lg);
+}
+
+/* Progress Page */
+.progress-charts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.chart-container {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.chart-container h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.measurements {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.measurements h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.measurement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.progress-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.measurement-item {
+    text-align: center;
+}
+
+.measurement-item h4 {
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.measurement-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.unit {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.measurement-change {
+    font-size: 0.9rem;
+}
+
+.measurement-change.positive {
+    color: var(--primary-color);
+}
+
+.measurement-change.negative {
+    color: #212121;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    transition: var(--transition);
+}
+
+.modal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--card-color);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+    animation: modalopen 0.3s;
+}
+
+.modal-header {
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-body {
+    padding: var(--spacing-lg);
+}
+
+.close-modal {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    max-width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+}
+
+label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid #424242;
+    background-color: #2a2a2a;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    color: var(--text-color);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(229, 57, 53, 0.5);
+}
+
+/* Login Page */
+.login-container {
+    max-width: 450px;
+    margin: 2rem auto;
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-lg);
+}
+
+.login-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: var(--spacing-sm);
+}
+
+.login-logo h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.login-tabs {
+    display: flex;
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid #424242;
+}
+
+.login-tab-btn {
+    flex: 1;
+    padding: var(--spacing-sm) 0;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-light);
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.login-tab-btn.active {
+    color: var(--primary-color);
+}
+
+.login-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.login-form {
+    display: none;
+}
+
+.login-form.active {
+    display: block;
+}
+
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.social-divider {
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+    position: relative;
+}
+
+.social-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #424242;
+    z-index: 1;
+}
+
+.social-divider span {
+    padding: 0 var(--spacing-sm);
+    background-color: var(--card-color);
+    position: relative;
+    z-index: 2;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.social-logins {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background-color: var(--card-color);
+    border: 1px solid #424242;
+    color: var(--text-color);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    width: 100%;
+}
+
+.google-login:hover {
+    background-color: #2a2a2a;
+}
+
+.google-login i {
+    color: #DB4437;
+}
+
+.form-terms {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+.form-terms a {
+    color: var(--primary-color);
+}
+
+/* Estilos para a página de perfil */
+.profile-page {
+    padding: var(--spacing-md);
+}
+
+.profile-container {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.profile-picture-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+}
+
+.change-picture {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.profile-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-color);
+}
+
+.profile-info p {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.profile-tabs {
+    display: flex;
+    border-bottom: 1px solid #333;
+    margin-bottom: var(--spacing-lg);
+    overflow-x: auto;
+}
+
+.profile-tab {
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-light);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    white-space: nowrap;
+}
+
+.profile-tab.active {
+    color: var(--primary-color);
+}
+
+.profile-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.profile-tab-content {
+    display: none;
+}
+
+.profile-tab-content.active {
+    display: block;
+}
+
+.divider {
+    margin: var(--spacing-lg) 0;
+    border: 0;
+    height: 1px;
+    background-color: #333;
+}
+
+.danger-zone {
+    padding: var(--spacing-md);
+    border: 1px solid #d32f2f;
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-lg);
+}
+
+.danger-zone h3 {
+    color: #f44336;
+    margin-bottom: var(--spacing-sm);
+}
+
+.btn-delete {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #b71c1c;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom right, rgba(183, 28, 28, 0.2), rgba(33, 33, 33, 0.2));
+    padding: var(--spacing-md);
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+    position: relative;
+}
+
+/* Exercise Timer Styles */
+.exercise-timer {
+    margin: 1rem 0;
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.timer-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Set Tracking Styles */
+.set-tracking {
+    margin-top: 1rem;
+    border-top: 1px solid var(--secondary-color);
+    padding-top: 1rem;
+}
+
+.set-tracking h5 {
+    margin-bottom: 0.75rem;
+}
+
+.set-records {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.set-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.set-number {
+    font-weight: bold;
+    width: 60px;
+}
+
+.set-fields {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+}
+
+.reps-field, .weight-field {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.reps-field label, .weight-field label {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.reps-done, .weight-used {
+    width: 60px;
+    text-align: center;
+}
+
+.set-history {
+    margin-top: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+}
+
+.history-record {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.history-record:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.set-list {
+    font-size: 0.9rem;
+}
+
+.set-list li {
+    margin-bottom: 2px;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+    
+    #main-nav {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: flex;
+        position: static;
+        box-shadow: none;
+        padding: 0;
+        gap: var(--spacing-md);
+    }
+    
+    .nav-item {
+        margin-bottom: 0;
+    }
+    
+    footer {
+        display: none;
+    }
+    
+    main {
+        margin-bottom: var(--spacing-md);
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .dashboard {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+    
+    .profile-header {
+        flex-wrap: nowrap;
+    }
+}
+
+/* Estilos para a legenda de tipos de treino */
+.workout-type-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.legend-item {
+    position: relative;
+    padding-left: 12px;
+    margin-right: 5px;
+    opacity: 0.7;
+}
+
+.legend-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.legend-item.workout-type-full-body::before {
+    background-color: #4CAF50;
+}
+
+.legend-item.workout-type-upper::before {
+    background-color: #2196F3;
+}
+
+.legend-item.workout-type-lower::before {
+    background-color: #FF9800;
+}
+
+.legend-item.workout-type-push::before {
+    background-color: #9C27B0;
+}
+
+.legend-item.workout-type-pull::before {
+    background-color: #FFC107;
+}
+
+.legend-item.workout-type-custom::before {
+    background-color: var(--primary-color);
+}
