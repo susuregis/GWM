@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FitLife - Aplicativo de Treino e Alimentação
 
 FitLife é um Progressive Web App (PWA) desenvolvido com HTML, CSS e JavaScript para acompanhamento de treinos e alimentação.
@@ -130,3 +131,6 @@ Algumas ideias para melhorar este aplicativo:
 - Permitir compartilhamento de treinos entre usuários
 - Implementar funcionalidade de exportação de dados em PDF ou CSV
 - Adicionar suporte a múltiplas linguagens
+=======
+# GWM
+>>>>>>> 5d6dc3fb8b87e8965332fdff7e59e80c3b549bfd
